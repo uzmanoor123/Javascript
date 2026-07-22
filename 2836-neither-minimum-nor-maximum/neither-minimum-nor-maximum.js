@@ -2,33 +2,24 @@
  * @param {number[]} nums
  * @return {number}
  */
-var findNonMinOrMax = function(nums) {
-//     const max = Math.max(...nums)
-//     const min = Math.min(...nums)
-//    for(let i = 0; i<nums.length; i++){
-//     if(nums[i]>min && nums[i]< max){
-//        return nums[i]
-//     }
-//    } 
-//    return -1
+var findNonMinOrMax = function (nums) {
+    let result = -1;
 
-    let min = Number.POSITIVE_INFINITY;
-    let max = Number.NEGATIVE_INFINITY;
-    
-    for(let i=0; i<nums.length; ++i) {
-        if(nums[i] > max) {
-            max = nums[i];
-        }
+    if (nums.length <= 2) return result;
 
-        if(nums[i] < min) {
+    let min = nums[0], max = nums[0];
+
+    for (let i = 1; i < 3; i++) {
+        if (nums[i] < min) {
+            result = min;
             min = nums[i];
-        }
-    }
-
-    for(let i=0; i<nums.length; ++i) {
-        if(nums[i] > min && nums[i] < max) {
+        } else if (nums[i] > max) {
+            result = max;
+            max = nums[i];
+        } else {
             return nums[i];
         }
     }
-    return -1;
+
+    return result;
 };
