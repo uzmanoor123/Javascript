@@ -8,11 +8,10 @@ var totalMoney = function(n) {
     let today = 1;
     for (let i = 1; i<=n; i++){
         total +=today
+        today++
         if(i%7===0){
             monday ++
             today = monday
-        }else{
-            today++
         }
     }
     return total
