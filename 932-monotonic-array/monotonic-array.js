@@ -3,15 +3,15 @@
  * @return {boolean}
  */
 var isMonotonic = function(nums) {
-    let increasing = true;
-    let decreasing = true;
-    for(let i=0; i<nums.length-1; i++){
-        if(nums[i]> nums[i+1]){
-            increasing= false
+    let diff = nums[1]-nums[0]
+    for(let i= 1; i<nums.length-1; i++){
+        let current = nums[i+1]-nums[i]
+        if(diff*current<0){
+        return false
         }
-        if(nums[i] < nums[i+ 1]){
-            decreasing= false
+        if(diff===0){
+        diff= current
         }
     }
-    return increasing || decreasing
+    return true
 };
